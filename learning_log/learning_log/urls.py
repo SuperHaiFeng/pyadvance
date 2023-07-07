@@ -15,8 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from learning_logs import views
+
+app_name = 'learning_logs'
 
 urlpatterns = [
+    #admin/对应的是管理后台
     path('admin/', admin.site.urls),
+    #默认首页是index.html（http://127.0.0.1:8000/）
+    path('', views.index),
+    path('', include(('learning_logs.urls', app_name), namespace='learning_logs')),
 ]
