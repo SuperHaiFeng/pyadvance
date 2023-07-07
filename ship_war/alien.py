@@ -1,6 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
 
+import pkg_resources
 
 class Alien(Sprite):
 	"""表示单个飞船的类"""
@@ -10,8 +11,8 @@ class Alien(Sprite):
 		super().__init__()
 		self.screen = screen
 		self.ai_settings = ai_settings
-
-		self.image = pygame.image.load('images/alien.bmp')
+		image_path = pkg_resources.resource_filename(__name__, 'images/alien.bmp')
+		self.image = pygame.image.load(image_path)
 		self.rect = self.image.get_rect()
 
 		self.rect.x = self.rect.width

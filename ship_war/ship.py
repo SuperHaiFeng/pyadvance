@@ -1,6 +1,8 @@
 import pygame
 from pygame.sprite import Sprite
 
+import pkg_resources
+
 class Ship(Sprite):
 
 	def __init__(self, ai_settings, screen):
@@ -10,7 +12,8 @@ class Ship(Sprite):
 		self.ai_settings = ai_settings
 
 		# 加载飞船图像
-		self.image = pygame.image.load('images/ship.bmp')
+		image_path = pkg_resources.resource_filename(__name__, 'images/ship.bmp')
+		self.image = pygame.image.load(image_path)
 		self.rect = self.image.get_rect()
 		self.screen_rect = screen.get_rect()
 
