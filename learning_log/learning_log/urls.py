@@ -27,4 +27,5 @@ urlpatterns = [
     #默认首页是index.html（http://127.0.0.1:8000/）
     path('', views.index),
     path('', include(('learning_logs.urls', app_name), namespace='learning_logs')),
+    path(r'^users/', include(('users.urls', 'users'), namespace='users')),
 ]
