@@ -1,8 +1,15 @@
-"""为learning_logs定义URL模式"""
+"""为应用程序users定义URL模式"""
 
 from django.urls import path, include
-from learning_logs import views
+from users import views
+from django.contrib.auth.views import LoginView
 
 urlpatterns = [
+    #登录页面
+    path('login/', LoginView.as_view(template_name='login.html'), name='login'),
+    # 登出
+    path('logout/', views.logout_view, name='logout'),
+    #注册用户
+    path('register/', views.register, name='register'),
     
 ]
