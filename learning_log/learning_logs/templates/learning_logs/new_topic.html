@@ -1,0 +1,16 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+
+<p>Add a new topid:</p>
+
+<form action="{% url 'learning_logs:new_topic' %}" method="post">
+	 <!-- Django使用模板标签{% csrf_token %}（见❷）来防止攻击者利用表单来获得对服务器未经授权的访问（这种攻击被称为跨站请求伪造 -->
+	{% csrf_token %}
+	<!-- 让Django自动创建显示表单所需的全部字段，as_p让django以段落格式渲染所有表单元素 -->
+	{{ form.as_p }}
+	<button name="submit"> add topic</button>
+</form>
+
+
+{% endblock content %}
